@@ -1,0 +1,135 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lalng="ca" xml:lang="ca" xmlns="http://www.w3.org/1999/xhtml"> 
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Phone</title>
+  </head>
+  
+ 
+<body bgcolor="grey" onLoad="cursor()">
+  var texte="";	
+	<h1>àlfa</h1>
+<script language="JavaScript">
+
+var phone = function(){
+
+	
+};
+
+
+var phoneNumber, contactName;
+
+function init() {
+	phoneNumber = document.getElementById("np");
+	contactName = document.getElementById("listl");
+}
+
+
+
+function cursor()
+	document.form1.listl.focus();
+
+function validar(e) {
+    teclap = (document.all) ? e.keyCode : e.which;
+  	if (teclap==8) return true;
+    	  patron =/[A-Za-z\s]/;
+    	  te = String.fromCharCode(teclap);
+    	return patron.test(te);
+} 
+	
+function validanum(n) {
+    num = (document.all) ? n.keyCode : n.which;
+    	if (num==8) return true;
+    	  patron =/[0-9]/;
+    	  tn = String.fromCharCode(num);
+    	return patron.test(tn);
+} 
+
+function teclado(value,teclas) {
+	phoneNumber.value = phoneNumber.value + value;
+	//var teclas =document.getElementById("np");
+	//teclas.value=teclas.value+value;
+}
+
+function clean()
+{
+	document.getElementById("np").value="";
+}
+
+function almacena() {
+	//var teclas = phoneNumber;
+	var nom=document.getElementById("listl").value;
+	//alert(nom);
+	var contacte=document.getElementById("listr").value;
+	
+	//if phoneNumber.value.length>9  alert("no valido");
+
+	//alert(contacte);
+	document.getElementById("listr").value=contacte + nom + " " + phoneNumber.value + '\n';
+	//alert(contacte);
+	
+	document.getElementById("listl").value="";
+	document.getElementById("np").value="";
+}
+
+</script>
+
+	<center><form name="form1"  >
+	
+	<br/><br/><br/><br/>
+	
+<table border="3px" bordercolor="#5E610B" >
+	
+<tr>	<td rowspan="7" align="left" bgcolor="white"><h3 align="center"><br>Name</h3>
+		<textarea id="listl" rows="1" cols="19" onkeypress="return validar(event)"></textarea>
+	</td>	
+
+	<td align="center" width="50"><input name="tecla" type="button" value="1" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="2" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="3" onClick="teclado(this.getAttribute('value'))"></td>
+
+	<td rowspan="7" align="right" bgcolor="#AEB888">
+		<textarea  id="listr" rows="8" cols=19 ></textarea>
+	</td>
+	
+</tr>
+	
+<tr>	<td align="center" width="50"><input name="tecla" type="button" value="4" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="5" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="6" onClick="teclado(this.getAttribute('value'))"></td>
+</tr>	
+
+<tr>	<td align="center" width="50"><input name="tecla" type="button" value="7" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="8" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="9" onClick="teclado(this.getAttribute('value'))"></td>
+</tr>	
+
+<tr>	<td align="center" width="50"><input name="tecla" type="button" value="*" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="0" onClick="teclado(this.getAttribute('value'))"></td>
+	<td align="center" width="50"><input name="tecla" type="button" value="#" onClick="teclado(this.getAttribute('value'))"></td>
+</tr>	
+
+<tr>	<td bgcolor="#AEB404" align="center" width="50"><input name="ad" type="button" value="AD" onClick="almacena()"</td>
+	<td bgcolor="#AEB404" align="center" width="50"><input name="call" type="button" value="CALL" onClick="clean()"</td>
+	<td bgcolor="#AEB404" align="center" width="50"><input name="cls" type="button" value="CLS" onClick="clean()"></td>
+</tr>	
+
+		<td colspan="3" align="center" bgcolor="#AEB404">
+			<textarea id="np"  onkeypress="return validanum(event)" ></textarea>
+			 
+		</td>
+
+	
+
+</table>
+</center>
+</form>
+
+<script>
+	init();
+</script>
+</body> 
+
+</html> 
